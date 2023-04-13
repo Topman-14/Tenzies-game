@@ -35,6 +35,9 @@ main{
 #desc > h1{
     font-size: 3em;
 }
+#desc > p{
+    text-align: center;
+}
 .die{
     background: rgb(255, 255, 255);
     border-radius: 10px;

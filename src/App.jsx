@@ -4,21 +4,21 @@ import Die from './Die'
 export default function(){
 
     function allNewDice(){
-        let diceNums = [];
-
+        let dice = [];
         for(let i=0; i < 10; i++){
-            diceNums.push(Math.floor(Math.random()*6 + 1))
+            dice.push({
+                value: Math.floor(Math.random()*6 + 1), 
+                isHeld: false})
         }
-
-        return diceNums
+        return dice
     }
     
-    const [dieNums, setDieNums] = useState(allNewDice())
+    const [allDice, setallDice] = useState(allNewDice())
 
-    const dieElements = dieNums.map(num => <Die value = {num}/>);
+    const dieElements = allDice.map(die => <Die value = {die.value}/>);
 
     function rollDice(){
-        setDieNums(allNewDice)
+        setallDice(allNewDice)
     }
 
     return(
