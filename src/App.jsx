@@ -18,8 +18,12 @@ export default function(){
     const [allDice, setAllDice] = useState(allNewDice())
 
     function holdDie(id){
-        
-        console.log(id)
+        setAllDice(prevDie => 
+            prevDie.map(die => (
+                die.key == id? { ...die, isHeld:!die.isHeld} 
+                : die
+            ))
+        )
     }
     
 
@@ -36,8 +40,8 @@ export default function(){
     return(
         <main>
             <div id="desc">
-            <h1>Tenzies</h1>
-            <p>hellooooo</p>
+            <h1>Tenzies!</h1>
+            <p>Roll until all dice are the same. <br />Click each die to freeze it at its current value between rolls.</p>
             </div>
             <div id="die-grid">
                 {dieElements}
