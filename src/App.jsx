@@ -8,17 +8,29 @@ export default function(){
         for(let i=0; i < 10; i++){
             dice.push({
                 value: Math.floor(Math.random()*6 + 1), 
-                isHeld: false})
+                isHeld: false,
+                key: i
+            })
         }
         return dice
     }
-    
-    const [allDice, setallDice] = useState(allNewDice())
 
-    const dieElements = allDice.map(die => <Die value = {die.value}/>);
+    const [allDice, setAllDice] = useState(allNewDice())
+
+    function holdDie(id){
+        
+        console.log(id)
+    }
+    
+
+    const dieElements = allDice.map(die => <Die 
+        value = {die.value} 
+        isHeld = {die.isHeld} 
+        handleClick={() => holdDie(die.key)}
+    />);
 
     function rollDice(){
-        setallDice(allNewDice)
+        setAllDice(allNewDice)
     }
 
     return(
