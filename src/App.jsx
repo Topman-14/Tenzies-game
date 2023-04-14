@@ -1,16 +1,22 @@
 import React, {useState, useEffect} from 'react'
 import Die from './Die'
+import { nanoid } from 'nanoid';
 
 export default function(){
+    function generateDice(){
+        return{
+            value: Math.floor(Math.random()*6 + 1), 
+            isHeld: false,
+            key: nanoid()
+            }
+    }
+
+    console.log(generateDice())
 
     function allNewDice(){
         let dice = [];
         for(let i=0; i < 10; i++){
-            dice.push({
-                value: Math.floor(Math.random()*6 + 1), 
-                isHeld: false,
-                key: i
-            })
+            dice.push(generateDice())
         }
         return dice
     }
@@ -25,17 +31,20 @@ export default function(){
             ))
         )
     }
-    
+
+    function rollDice(){
+        setAllDice(prevDie => 
+            prevDie.map(die => {
+                console.log(die)
+                return die.isHeld? die : generateDice()
+    }))
+    }
 
     const dieElements = allDice.map(die => <Die 
         value = {die.value} 
         isHeld = {die.isHeld} 
         handleClick={() => holdDie(die.key)}
     />);
-
-    function rollDice(){
-        setAllDice(allNewDice)
-    }
 
     return(
         <main>
