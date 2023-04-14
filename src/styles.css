@@ -49,6 +49,11 @@ main{
     letter-spacing: 1px;
     word-spacing: 1px;
 }
+a{
+    text-decoration-style: wavy;
+    text-underline-offset: 4px;
+    color: rgb(255, 251, 0);
+}
 .die{
     border-radius: 10px;
     border: 2px solid rgb(93, 2, 105);

@@ -70,7 +70,10 @@ export default function(){
             {tenzies && <Confetti />}
             <div id="desc">
             <h1>Tenzies!</h1>
-            <p>Roll until all dice are the same. <br />Click each die to freeze it at its current value between rolls.</p>
+            <p>Roll until all dice are the same. <br />Click each die to stop it from changing.
+            <br />
+            Made by <a href="http://www.github.com/Topman-14">Topman</a>
+            </p>
             </div>
             <div id="die-grid">
                 {dieElements}
