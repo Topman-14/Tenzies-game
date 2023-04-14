@@ -3,8 +3,7 @@ import React from 'react'
 export default function Die(props) {
   const style = {
     backgroundColor: props.isHeld? "purple" : 'white',
-    color: props.isHeld? "white" : 'rgb(47, 1, 53)',
-    // borderColor: props.isHeld? "white" : 'rgb(47, 1, 53)'
+    color: props.isHeld? "white" : 'rgb(47, 1, 53)'
   }
 
   return (

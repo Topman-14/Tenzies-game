@@ -11,8 +11,6 @@ export default function(){
             }
     }
 
-    console.log(generateDice())
-
     function allNewDice(){
         let dice = [];
         for(let i=0; i < 10; i++){
@@ -35,12 +33,24 @@ export default function(){
     function rollDice(){
         setAllDice(prevDie => 
             prevDie.map(die => {
-                console.log(die)
                 return die.isHeld? die : generateDice()
     }))
     }
 
+    const [tenzies, setTenzies] = useState(false);
+
+    useEffect(()=>{
+        const allHeld = allDice.every(die => die.isHeld)
+        const allSame = allDice.every(die => die.value === allDice[0].value)
+
+        if(allHeld && allSame){
+            setTenzies(true)
+            console.log('you won!')
+        }
+    }, [allDice])
+
     const dieElements = allDice.map(die => <Die 
+        key={die.key}
         value = {die.value} 
         isHeld = {die.isHeld} 
         handleClick={() => holdDie(die.key)}
@@ -55,7 +65,7 @@ export default function(){
             <div id="die-grid">
                 {dieElements}
             </div>
-            <button id='roll-dice' onClick={rollDice}>Roll</button>
+            <button id='roll-dice' onClick={rollDice}>{tenzies? "New Game?" : 'Roll'}</button>
         </main>
     )
 }
