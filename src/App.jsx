@@ -67,7 +67,7 @@ export default function(){
 
     return(
         <main>
-            {tenzies && <Confetti />}
+            {tenzies && <Confetti/>}
             <div id="desc">
             <h1>Tenzies!</h1>
             <p>Roll until all dice are the same. <br />Click each die to stop it from changing.
